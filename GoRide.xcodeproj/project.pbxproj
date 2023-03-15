@@ -12,6 +12,7 @@
 		06D85F2F29C1673E006C0779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06D85F2E29C1673E006C0779 /* Preview Assets.xcassets */; };
 		06D85F3C29C16833006C0779 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F3B29C16833006C0779 /* HomeView.swift */; };
 		06D85F3E29C168D6006C0779 /* GoRideMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F3D29C168D6006C0779 /* GoRideMapViewRepresentable.swift */; };
+		06D85F4029C174A9006C0779 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F3F29C174A9006C0779 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		06D85F2E29C1673E006C0779 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		06D85F3B29C16833006C0779 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		06D85F3D29C168D6006C0779 /* GoRideMapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRideMapViewRepresentable.swift; sourceTree = "<group>"; };
+		06D85F3F29C174A9006C0779 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		06D85F3629C1674F006C0779 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				06D85F3F29C174A9006C0779 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06D85F4029C174A9006C0779 /* LocationManager.swift in Sources */,
 				06D85F2829C1673C006C0779 /* GoRideApp.swift in Sources */,
 				06D85F3E29C168D6006C0779 /* GoRideMapViewRepresentable.swift in Sources */,
 				06D85F3C29C16833006C0779 /* HomeView.swift in Sources */,
@@ -314,6 +318,9 @@
 				DEVELOPMENT_TEAM = 84ZVHZY7F4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow us access your location to find you near  driver";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow us access your location to find you near  driver";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us access your location to find you near  driver";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -343,6 +350,9 @@
 				DEVELOPMENT_TEAM = 84ZVHZY7F4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow us access your location to find you near  driver";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow us access your location to find you near  driver";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us access your location to find you near  driver";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
