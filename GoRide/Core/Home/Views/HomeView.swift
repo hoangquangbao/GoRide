@@ -8,18 +8,31 @@
 import SwiftUI
 
 struct HomeView: View {
-        
+    
+    @State private var isShowLocationSearchView: Bool = false
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     var body: some View {
         ZStack(alignment: .top) {
+            
             GoRideMapViewRepresentable()
                 .edgesIgnoringSafeArea(.all)
             
-            VStack(alignment: .leading, spacing: 20) {
-                MapViewActionButton()
+            if isShowLocationSearchView {
+                LocationSearchView()
+            } else {
                 LocationSearchActivationView()
+                    .onTapGesture {
+                        withAnimation {
+                            isShowLocationSearchView.toggle()
+                        }
+                    }
             }
-            .padding(.horizontal)
+            
+            MapViewActionButton(isShowLocationSearchView: $isShowLocationSearchView)
         }
+        .preferredColorScheme(.dark)
+        .foregroundColor(colorScheme == .light ? .black : .white)
     }
 }
 

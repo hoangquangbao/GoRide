@@ -10,6 +10,8 @@
 		068426AD29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426AC29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift */; };
 		068426B329C2B9AC004C1F68 /* LocationSearchActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B229C2B9AC004C1F68 /* LocationSearchActivationView.swift */; };
 		068426B529C2C00E004C1F68 /* MapViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B429C2C00E004C1F68 /* MapViewActionButton.swift */; };
+		068426B729C2C98E004C1F68 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B629C2C98E004C1F68 /* LocationSearchView.swift */; };
+		068426B929C2F1A6004C1F68 /* LocationSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B829C2F1A6004C1F68 /* LocationSearchResultCell.swift */; };
 		06D85F2829C1673C006C0779 /* GoRideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F2729C1673C006C0779 /* GoRideApp.swift */; };
 		06D85F2C29C1673E006C0779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06D85F2B29C1673E006C0779 /* Assets.xcassets */; };
 		06D85F2F29C1673E006C0779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06D85F2E29C1673E006C0779 /* Preview Assets.xcassets */; };
@@ -22,6 +24,8 @@
 		068426AC29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextFieldStyle.swift; sourceTree = "<group>"; };
 		068426B229C2B9AC004C1F68 /* LocationSearchActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchActivationView.swift; sourceTree = "<group>"; };
 		068426B429C2C00E004C1F68 /* MapViewActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewActionButton.swift; sourceTree = "<group>"; };
+		068426B629C2C98E004C1F68 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
+		068426B829C2F1A6004C1F68 /* LocationSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultCell.swift; sourceTree = "<group>"; };
 		06D85F2429C1673C006C0779 /* GoRide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D85F2729C1673C006C0779 /* GoRideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRideApp.swift; sourceTree = "<group>"; };
 		06D85F2B29C1673E006C0779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				068426B229C2B9AC004C1F68 /* LocationSearchActivationView.swift */,
+				068426B829C2F1A6004C1F68 /* LocationSearchResultCell.swift */,
+				068426B629C2C98E004C1F68 /* LocationSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +259,8 @@
 				06D85F2829C1673C006C0779 /* GoRideApp.swift in Sources */,
 				06D85F3E29C168D6006C0779 /* GoRideMapViewRepresentable.swift in Sources */,
 				06D85F3C29C16833006C0779 /* HomeView.swift in Sources */,
+				068426B729C2C98E004C1F68 /* LocationSearchView.swift in Sources */,
+				068426B929C2F1A6004C1F68 /* LocationSearchResultCell.swift in Sources */,
 				068426B329C2B9AC004C1F68 /* LocationSearchActivationView.swift in Sources */,
 				068426B529C2C00E004C1F68 /* MapViewActionButton.swift in Sources */,
 			);

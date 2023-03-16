@@ -8,23 +8,51 @@
 import SwiftUI
 
 struct MapViewActionButton: View {
+    
+    @Binding var isShowLocationSearchView: Bool
+    
     var body: some View {
-        Button {
+        
+        HStack {
+            if isShowLocationSearchView {
+                Button {
+                    withAnimation {
+                        isShowLocationSearchView.toggle()
+                    }
+                } label: {
+                    Image(systemName: "arrow.backward")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .frame(width: 45, height: 45)
+                        .background(.white)
+                        .clipShape(Circle())
+                        .shadow(color: .black, radius: 6)
+                }
+            } else {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "line.3.horizontal")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .frame(width: 45, height: 45)
+                        .background(.white)
+                        .clipShape(Circle())
+                        .shadow(color: .black, radius: 6)
+                }
+            }
             
-        } label: {
-            Image(systemName: "line.3.horizontal")
-                .font(.title2)
-                .foregroundColor(.black)
-                .padding(12)
-                .background(.white)
-                .clipShape(Circle())
-                .shadow(color: .black, radius: 6)
+            Spacer()
         }
+        .padding(.horizontal)
     }
 }
 
 struct MapViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
-        MapViewActionButton()
+        VStack(spacing: 20) {
+            MapViewActionButton(isShowLocationSearchView: .constant(true))
+            MapViewActionButton(isShowLocationSearchView: .constant(false))
+        }
     }
 }

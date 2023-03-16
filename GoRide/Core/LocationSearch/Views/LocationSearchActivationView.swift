@@ -9,8 +9,6 @@ import SwiftUI
 
 struct LocationSearchActivationView: View {
     
-    @State var whereTo: String = ""
-
     var body: some View {
         HStack {
             Image(systemName: "arrow.triangle.branch")
@@ -18,8 +16,10 @@ struct LocationSearchActivationView: View {
                 .padding(.horizontal,5)
                 .foregroundColor(.black)
             
-            TextField("", text: $whereTo)
-                .textFieldStyle(PlaceholderTextFieldStyle("Where to?", text: $whereTo))
+            Text("Where to?")
+                .foregroundColor(.black)
+            
+            Spacer()
         }
         .padding(12)
         .background(.white)
@@ -27,7 +27,8 @@ struct LocationSearchActivationView: View {
             RoundedRectangle(cornerRadius: 8)
         )
         .shadow(color: .black, radius: 5)
-        .padding(.horizontal)
+        .padding(.horizontal, 25)
+        .padding(.top, 64)
     }
 }
 

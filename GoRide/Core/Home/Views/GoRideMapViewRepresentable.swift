@@ -55,7 +55,7 @@ extension GoRideMapViewRepresentable {
                                                     latitudeDelta: 0.05,
                                                     longitudeDelta: 0.05))
             print("User location: \(region.center)")
-
+            
             parent.mapView.setRegion(region, animated: true)
         }
     }
