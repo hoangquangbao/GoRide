@@ -11,9 +11,9 @@ struct LocationSearchResultCell: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "mappin.circle.fill")
+            Image(systemName: "mappin.and.ellipse")
                 .resizable()
-                .foregroundStyle(.white, .green)
+                .foregroundStyle(.green, .gray)
                 .frame(width: 40, height: 40)
             
             VStack(alignment: .leading, spacing: 5) {
