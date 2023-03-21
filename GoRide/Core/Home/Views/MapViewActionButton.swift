@@ -32,7 +32,7 @@ struct MapViewActionButton: View {
                 Button {
                     
                 } label: {
-                    Image(systemName: "line.3.horizontal")
+                    Image(systemName: "line.3.horizontal.decrease")
                         .font(.title2)
                         .foregroundColor(.black)
                         .frame(width: 45, height: 45)

@@ -17,7 +17,7 @@ struct LocationSearchView: View {
             //header view
             HStack {
                 VStack {
-                    Circle()
+                    Rectangle()
                         .fill(Color(.systemGray3))
                         .frame(width: 6, height: 6)
                     
@@ -25,9 +25,13 @@ struct LocationSearchView: View {
                         .fill(Color(.systemGray3))
                         .frame(width: 1, height: 25)
                     
-                    Circle()
-                    //                        .fill(.secondary)
+                    Rectangle()
                         .frame(width: 6, height: 6)
+                        .padding(3)
+                        .overlay {
+                            Rectangle()
+                                .stroke(.green)
+                        }
                 }
                 
                 VStack {
