@@ -14,34 +14,21 @@ struct MapViewActionButton: View {
     var body: some View {
         
         HStack {
-            if isShowLocationSearchView {
-                Button {
+            Button {
+                if isShowLocationSearchView {
                     withAnimation {
                         isShowLocationSearchView.toggle()
                     }
-                } label: {
-                    Image(systemName: "arrow.backward")
-                        .font(.title2)
-                        .foregroundColor(.black)
-                        .frame(width: 45, height: 45)
-                        .background(.white)
-                        .clipShape(Circle())
-                        .shadow(color: .black, radius: 6)
                 }
-            } else {
-                Button {
-                    
-                } label: {
-                    Image(systemName: "line.3.horizontal.decrease")
-                        .font(.title2)
-                        .foregroundColor(.black)
-                        .frame(width: 45, height: 45)
-                        .background(.white)
-                        .clipShape(Circle())
-                        .shadow(color: .black, radius: 6)
-                }
+            } label: {
+                Image(systemName: isShowLocationSearchView ? "arrow.backward" : "line.3.horizontal.decrease")
+                    .font(.title2)
+                    .foregroundColor(.black)
+                    .frame(width: 45, height: 45)
+                    .background(.white)
+                    .clipShape(Circle())
+                    .shadow(color: .black, radius: 6)
             }
-            
             Spacer()
         }
         .padding(.horizontal)
