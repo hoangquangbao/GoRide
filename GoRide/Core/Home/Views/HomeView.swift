@@ -31,7 +31,7 @@ struct HomeView: View {
             
             MapViewActionButton(isShowLocationSearchView: $isShowLocationSearchView)
         }
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
         .foregroundColor(colorScheme == .light ? .black : .white)
     }
 }

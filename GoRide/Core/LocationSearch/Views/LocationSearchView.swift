@@ -12,6 +12,8 @@ struct LocationSearchView: View {
     @State private var startLocationText: String = ""
     @State private var destinationLocationText: String = ""
     
+    @StateObject var vm = LocationSearchViewModel()
+    
     var body: some View {
         VStack {
             //header view
@@ -40,7 +42,7 @@ struct LocationSearchView: View {
                         .background(Color(.systemGray6))
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                     
-                    TextField("Where to", text: $destinationLocationText)
+                    TextField("Where to", text: $vm.queryFragment)
                         .padding(8)
                         .background(Color(.systemGray3))
                         .clipShape(RoundedRectangle(cornerRadius: 5))
@@ -55,8 +57,9 @@ struct LocationSearchView: View {
             //list view
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    ForEach(1..<10) { _ in
-                        LocationSearchResultCell()
+                    ForEach(vm.result, id: \.self) { result in
+                        LocationSearchResultCell(title: result.title,
+                                                 subtitle: result.subtitle)
                     }
                 }
             }

@@ -18,6 +18,7 @@
 		06D85F3C29C16833006C0779 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F3B29C16833006C0779 /* HomeView.swift */; };
 		06D85F3E29C168D6006C0779 /* GoRideMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F3D29C168D6006C0779 /* GoRideMapViewRepresentable.swift */; };
 		06D85F4029C174A9006C0779 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F3F29C174A9006C0779 /* LocationManager.swift */; };
+		06ECAFB829C98C4000837E6F /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ECAFB729C98C4000837E6F /* LocationSearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		06D85F3B29C16833006C0779 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		06D85F3D29C168D6006C0779 /* GoRideMapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRideMapViewRepresentable.swift; sourceTree = "<group>"; };
 		06D85F3F29C174A9006C0779 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		06ECAFB729C98C4000837E6F /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		068426B029C2B96F004C1F68 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				06ECAFB729C98C4000837E6F /* LocationSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				06D85F4029C174A9006C0779 /* LocationManager.swift in Sources */,
 				068426AD29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift in Sources */,
 				06D85F2829C1673C006C0779 /* GoRideApp.swift in Sources */,
+				06ECAFB829C98C4000837E6F /* LocationSearchViewModel.swift in Sources */,
 				06D85F3E29C168D6006C0779 /* GoRideMapViewRepresentable.swift in Sources */,
 				06D85F3C29C16833006C0779 /* HomeView.swift in Sources */,
 				068426B729C2C98E004C1F68 /* LocationSearchView.swift in Sources */,

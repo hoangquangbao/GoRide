@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct LocationSearchResultCell: View {
+    
+    let title: String
+    let subtitle: String
     
     var body: some View {
         HStack {
@@ -17,10 +21,10 @@ struct LocationSearchResultCell: View {
                 .frame(width: 40, height: 40)
             
             VStack(alignment: .leading, spacing: 5) {
-                Text("TMA Innovation Park")
+                Text(title)
                     .font(.body)
                 
-                Text("P, 12 Đại lộ Khoa học, Thung lũng Sáng tạo, Ghềnh Ráng, Bình Định 55121, Vietnam")
+                Text(subtitle)
                     .font(.callout)
                     .foregroundColor(.secondary)
                 
@@ -28,12 +32,20 @@ struct LocationSearchResultCell: View {
             }
             .padding(.leading, 6)
         }
+        .frame(height: 70)
         .padding(.horizontal)
     }
 }
 
 struct LocationSearchResultCell_Previews: PreviewProvider {
+    
+    static let result: MKLocalSearchCompletion = {
+        let completion = MKLocalSearchCompletion()
+        return completion
+    }()
+    
     static var previews: some View {
-        LocationSearchResultCell()
+        LocationSearchResultCell(title: "123 Street",
+                                 subtitle: "Viet Nam, VN")
     }
 }
