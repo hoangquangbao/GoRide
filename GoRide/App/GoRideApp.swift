@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct GoRideApp: App {
+    
+    @StateObject var vm = LocationSearchViewModel()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(vm)
         }
     }
 }

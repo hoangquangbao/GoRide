@@ -13,6 +13,8 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     let mapView = MKMapView()
     let locationManager = LocationManager()
     
+    @EnvironmentObject var vm: LocationSearchViewModel
+    
     func makeUIView(context: Context) -> some UIView {
         mapView.delegate = context.coordinator
         mapView.isRotateEnabled = false
@@ -26,7 +28,9 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        
+        if let selectedLocation = vm.selectLocation {
+            print("DEBUG selected location: \(selectedLocation)")
+        }
     }
     
     func makeCoordinator() -> MapCoordinator {
