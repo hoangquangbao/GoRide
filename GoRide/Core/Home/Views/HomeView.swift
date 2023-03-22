@@ -19,7 +19,7 @@ struct HomeView: View {
                 .edgesIgnoringSafeArea(.all)
             
             if isShowLocationSearchView {
-                LocationSearchView()
+                LocationSearchView(isShowLocationSearchView: $isShowLocationSearchView)
             } else {
                 LocationSearchActivationView()
                     .onTapGesture {

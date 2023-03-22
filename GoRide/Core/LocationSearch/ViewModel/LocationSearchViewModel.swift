@@ -11,6 +11,8 @@ import MapKit
 class LocationSearchViewModel: NSObject, ObservableObject {
     
     @Published var result = [MKLocalSearchCompletion]()
+    @Published var selectLocation: String?
+    
     private let searchCompleter = MKLocalSearchCompleter()
     var queryFragment: String = "" {
         didSet {
@@ -23,6 +25,11 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         super.init()
         searchCompleter.delegate = self
 //        searchCompleter.queryFragment = queryFragment
+    }
+    
+    func selectLocation(_ location: String) {
+        self.selectLocation = location
+        NSLog("DEBUG selectLocation: \(String(describing: selectLocation))")
     }
 }
 
