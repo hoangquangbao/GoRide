@@ -30,6 +30,8 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         if let coordinate = vm.selectLocationCoordinate {
             print("DEBUG selected coordinates in map view: \(coordinate)")
+            context.coordinator.addAndSelectAnnotation(withCoornadite: coordinate)
+            context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
         }
     }
     
@@ -41,15 +43,22 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
 extension GoRideMapViewRepresentable {
     
     class MapCoordinator: NSObject, MKMapViewDelegate {
-        let parent: GoRideMapViewRepresentable
         
+        // MARK: - Properties
+        let parent: GoRideMapViewRepresentable
+        var userLocationCoordinate: CLLocationCoordinate2D?
+        
+        // MARK: - Lifecycle
         init(parent: GoRideMapViewRepresentable) {
             self.parent = parent
             super.init()
         }
         
+        // MARK: - MKMapViewDelegate
+        
         // Tells the delegate when the map view updates the user's location
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+            self.userLocationCoordinate = userLocation.coordinate
             let region = MKCoordinateRegion(center:
                                                 CLLocationCoordinate2D(
                                                     latitude: userLocation.coordinate.latitude,
@@ -61,6 +70,63 @@ extension GoRideMapViewRepresentable {
             print("User location: \(region.center)")
             
             parent.mapView.setRegion(region, animated: true)
+        }
+        
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            let polyline = MKPolylineRenderer(overlay: overlay)
+            polyline.strokeColor = .systemBlue
+            polyline.lineWidth = 5
+            
+            return polyline
+        }
+        
+        // MARK: - Helper
+        
+        func addAndSelectAnnotation(withCoornadite coordinate: CLLocationCoordinate2D) {
+            
+            // Removing all annotations on the map view before adding new annotation
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            
+            let anno = MKPointAnnotation()
+            anno.coordinate = coordinate
+            self.parent.mapView.addAnnotation(anno)
+            self.parent.mapView.selectAnnotation(anno, animated: true)
+            
+            // Auto zoom the map view to fix the screen size
+            parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
+        }
+        
+        func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
+            
+            // Removes one or more overlay routers from the map
+            parent.mapView.removeOverlays(parent.mapView.overlays)
+            
+            guard let userLocationCoordinate = self.userLocationCoordinate else { return }
+            getDestinationRoute(from: userLocationCoordinate,
+                                to: coordinate) { router in
+                self.parent.mapView.addOverlay(router.polyline)
+            }
+        }
+        
+        //Get the router representing the direction between the start and end points.
+        func getDestinationRoute(from userLocation: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping (MKRoute) -> Void) {
+            let userPlacemark = MKPlacemark(coordinate: userLocation)
+            let destPlacemark = MKPlacemark(coordinate: destination)
+            
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: userPlacemark)
+            request.destination = MKMapItem(placemark: destPlacemark)
+            
+            let directions = MKDirections(request: request)
+            directions.calculate { response, error in
+                if let error = error {
+                    print("DEBUG: Failed to get directions with error \(error)")
+                    return
+                }
+                
+                guard let router = response?.routes.first else { return }
+                completion(router)
+            }
         }
     }
 }
