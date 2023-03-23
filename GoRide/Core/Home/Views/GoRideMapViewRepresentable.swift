@@ -78,6 +78,9 @@ extension GoRideMapViewRepresentable {
             anno.coordinate = coordinate
             self.parent.mapView.addAnnotation(anno)
             self.parent.mapView.selectAnnotation(anno, animated: true)
+            
+            // Auto zoom the map view to fix the screen size
+            parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
         }
     }
 }
