@@ -30,6 +30,7 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         if let coordinate = vm.selectLocationCoordinate {
             print("DEBUG selected coordinates in map view: \(coordinate)")
+            context.coordinator.addAndSelectAnnotation(withCoornadite: coordinate)
         }
     }
     
@@ -41,13 +42,17 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
 extension GoRideMapViewRepresentable {
     
     class MapCoordinator: NSObject, MKMapViewDelegate {
+        
+        // MARK: - Properties
         let parent: GoRideMapViewRepresentable
         
+        // MARK: - Lifecycle
         init(parent: GoRideMapViewRepresentable) {
             self.parent = parent
             super.init()
         }
         
+        // MARK: - MKMapViewDelegate
         // Tells the delegate when the map view updates the user's location
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
             let region = MKCoordinateRegion(center:
@@ -61,6 +66,14 @@ extension GoRideMapViewRepresentable {
             print("User location: \(region.center)")
             
             parent.mapView.setRegion(region, animated: true)
+        }
+        
+        // MARK: - Helper
+        func addAndSelectAnnotation(withCoornadite coordinate: CLLocationCoordinate2D) {
+            let anno = MKPointAnnotation()
+            anno.coordinate = coordinate
+            self.parent.mapView.addAnnotation(anno)
+            self.parent.mapView.selectAnnotation(anno, animated: true)
         }
     }
 }
