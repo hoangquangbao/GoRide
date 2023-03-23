@@ -28,8 +28,8 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        if let selectedLocation = vm.selectLocation {
-            print("DEBUG selected location: \(selectedLocation)")
+        if let coordinate = vm.selectLocationCoordinate {
+            print("DEBUG selected coordinates in map view: \(coordinate)")
         }
     }
     
