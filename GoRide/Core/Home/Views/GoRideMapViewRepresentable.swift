@@ -70,6 +70,10 @@ extension GoRideMapViewRepresentable {
         
         // MARK: - Helper
         func addAndSelectAnnotation(withCoornadite coordinate: CLLocationCoordinate2D) {
+            
+            // Removing all annotations on the map view before adding new annotation
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            
             let anno = MKPointAnnotation()
             anno.coordinate = coordinate
             self.parent.mapView.addAnnotation(anno)
