@@ -61,7 +61,7 @@ struct LocationSearchView: View {
                         LocationSearchResultCell(title: result.title,
                                                  subtitle: result.subtitle)
                         .onTapGesture {
-                            vm.selectLocation(result.title)
+                            vm.selectLocation(result)
                             isShowLocationSearchView.toggle()
                         }
                     }
