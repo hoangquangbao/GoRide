@@ -13,6 +13,8 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     let mapView = MKMapView()
     let locationManager = LocationManager()
     
+    @Binding var mapState: MapViewState
+    
     @EnvironmentObject var vm: LocationSearchViewModel
     
     func makeUIView(context: Context) -> some UIView {
@@ -28,6 +30,7 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
+        print("DEBUG: Map state is \(mapState)")
         if let coordinate = vm.selectLocationCoordinate {
             print("DEBUG selected coordinates in map view: \(coordinate)")
             context.coordinator.addAndSelectAnnotation(withCoornadite: coordinate)
@@ -98,7 +101,7 @@ extension GoRideMapViewRepresentable {
         
         func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
             
-            // Removes one or more overlay routers from the map
+            // Removes a previous router before drawing a new router on the map view
             parent.mapView.removeOverlays(parent.mapView.overlays)
             
             guard let userLocationCoordinate = self.userLocationCoordinate else { return }

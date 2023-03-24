@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var isShowLocationSearchView: Bool = false
+    @State private var mapState: MapViewState = .noInput
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
@@ -18,18 +18,18 @@ struct HomeView: View {
             GoRideMapViewRepresentable()
                 .edgesIgnoringSafeArea(.all)
             
-            if isShowLocationSearchView {
-                LocationSearchView(isShowLocationSearchView: $isShowLocationSearchView)
-            } else {
+            if mapState == .searchingForLocation {
+                LocationSearchView(mapState: $mapState)
+            } else if mapState == .noInput {
                 LocationSearchActivationView()
                     .onTapGesture {
                         withAnimation {
-                            isShowLocationSearchView.toggle()
+                            mapState = .searchingForLocation
                         }
                     }
             }
             
-            MapViewActionButton(isShowLocationSearchView: $isShowLocationSearchView)
+            MapViewActionButton(mapState: $mapState)
         }
 //        .preferredColorScheme(.dark)
         .foregroundColor(colorScheme == .light ? .black : .white)
