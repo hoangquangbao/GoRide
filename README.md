@@ -18,4 +18,6 @@
 
 🍀 MapKit
 
+🍀 Core Location
+
 
