@@ -15,7 +15,7 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment: .top) {
             
-            GoRideMapViewRepresentable()
+            GoRideMapViewRepresentable(mapState: $mapState)
                 .edgesIgnoringSafeArea(.all)
             
             if mapState == .searchingForLocation {
