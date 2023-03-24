@@ -19,11 +19,12 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.isRotateEnabled = false
         mapView.showsUserLocation = true
-        DispatchQueue.global().async {
-            if CLLocationManager.locationServicesEnabled() {
-                mapView.userTrackingMode = .follow
-            }
-        }
+//        DispatchQueue.global().async {
+//            if CLLocationManager.locationServicesEnabled() {
+//                mapView.userTrackingMode = .follow
+//            }
+//        }
+        mapView.userTrackingMode = .follow
         return mapView
     }
     
@@ -64,6 +65,7 @@ extension GoRideMapViewRepresentable {
                                                     latitude: userLocation.coordinate.latitude,
                                                     longitude: userLocation.coordinate.longitude),
                                             span:
+                                                //set the desired zoom level of the map
                                                 MKCoordinateSpan(
                                                     latitudeDelta: 0.05,
                                                     longitudeDelta: 0.05))
