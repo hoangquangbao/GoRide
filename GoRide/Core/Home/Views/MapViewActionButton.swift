@@ -9,19 +9,20 @@ import SwiftUI
 
 struct MapViewActionButton: View {
     
-    @Binding var isShowLocationSearchView: Bool
+    @Binding var mapState: MapViewState
     
     var body: some View {
         
         HStack {
             Button {
-                if isShowLocationSearchView {
-                    withAnimation {
-                        isShowLocationSearchView.toggle()
-                    }
-                }
+//                if mapState == .searchingForLocation {
+//                    withAnimation {
+//                        mapState = .noInput
+//                    }
+//                }
+                actionForState(mapState)
             } label: {
-                Image(systemName: isShowLocationSearchView ? "arrow.backward" : "line.3.horizontal.decrease")
+                Image(systemName: imageNameForState(mapState))
                     .font(.title2)
                     .foregroundColor(.black)
                     .frame(width: 45, height: 45)
@@ -33,13 +34,34 @@ struct MapViewActionButton: View {
         }
         .padding(.horizontal)
     }
+    
+    func actionForState(_ state: MapViewState) {
+        switch state {
+        case .noInput:
+            print("DEBUG: No input")
+        case .locationSelected:
+            print("DEBUG: Location selected - Clear map view")
+            mapState = .noInput
+        case .searchingForLocation:
+            mapState = .noInput
+        }
+    }
+    
+    func imageNameForState(_ state: MapViewState) -> String {
+        switch state {
+        case .noInput:
+            return "line.3.horizontal.decrease"
+        case .locationSelected, .searchingForLocation:
+            return "arrow.backward"
+        }
+    }
 }
 
 struct MapViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
-            MapViewActionButton(isShowLocationSearchView: .constant(true))
-            MapViewActionButton(isShowLocationSearchView: .constant(false))
+            MapViewActionButton(mapState: .constant(.noInput))
+            MapViewActionButton(mapState: .constant(.searchingForLocation))
         }
     }
 }

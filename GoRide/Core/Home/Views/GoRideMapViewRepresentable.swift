@@ -13,6 +13,8 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     let mapView = MKMapView()
     let locationManager = LocationManager()
     
+    @Binding var mapState: MapViewState
+    
     @EnvironmentObject var vm: LocationSearchViewModel
     
     func makeUIView(context: Context) -> some UIView {
@@ -29,10 +31,21 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        if let coordinate = vm.selectLocationCoordinate {
-            print("DEBUG selected coordinates in map view: \(coordinate)")
-            context.coordinator.addAndSelectAnnotation(withCoornadite: coordinate)
-            context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
+        print("DEBUG: Map state is \(mapState)")
+
+        switch mapState {
+        case .noInput:
+            context.coordinator.clearMapViewAndRecentUserLocation()
+            break
+        case .locationSelected:
+            if let coordinate = vm.selectLocationCoordinate {
+                print("DEBUG selected coordinates in map view: \(coordinate)")
+                context.coordinator.addAndSelectAnnotation(withCoornadite: coordinate)
+                context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
+            }
+            break
+        case .searchingForLocation:
+            break
         }
     }
     
@@ -48,6 +61,7 @@ extension GoRideMapViewRepresentable {
         // MARK: - Properties
         let parent: GoRideMapViewRepresentable
         var userLocationCoordinate: CLLocationCoordinate2D?
+        var currentRegion: MKCoordinateRegion?
         
         // MARK: - Lifecycle
         init(parent: GoRideMapViewRepresentable) {
@@ -70,6 +84,9 @@ extension GoRideMapViewRepresentable {
                                                     latitudeDelta: 0.05,
                                                     longitudeDelta: 0.05))
             print("User location: \(region.center)")
+            
+            // Get current region to process after clear the map view
+            self.currentRegion = region
             
             parent.mapView.setRegion(region, animated: true)
         }
@@ -100,7 +117,7 @@ extension GoRideMapViewRepresentable {
         
         func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
             
-            // Removes one or more overlay routers from the map
+            // Removes a previous router before drawing a new router on the map view
             parent.mapView.removeOverlays(parent.mapView.overlays)
             
             guard let userLocationCoordinate = self.userLocationCoordinate else { return }
@@ -128,6 +145,15 @@ extension GoRideMapViewRepresentable {
                 
                 guard let router = response?.routes.first else { return }
                 completion(router)
+            }
+        }
+        
+        func clearMapViewAndRecentUserLocation() {
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            parent.mapView.removeOverlays(parent.mapView.overlays)
+            
+            if let currentRegion = currentRegion {
+                parent.mapView.setRegion(currentRegion, animated: true)
             }
         }
     }
