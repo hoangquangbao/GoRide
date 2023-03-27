@@ -31,7 +31,7 @@ struct HomeView: View {
             
             MapViewActionButton(mapState: $mapState)
         }
-//        .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
         .foregroundColor(colorScheme == .light ? .black : .white)
     }
 }
