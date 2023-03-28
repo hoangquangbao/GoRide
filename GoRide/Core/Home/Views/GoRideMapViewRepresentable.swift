@@ -21,11 +21,6 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.isRotateEnabled = false
         mapView.showsUserLocation = true
-//        DispatchQueue.global().async {
-//            if CLLocationManager.locationServicesEnabled() {
-//                mapView.userTrackingMode = .follow
-//            }
-//        }
         mapView.userTrackingMode = .follow
         return mapView
     }
@@ -103,9 +98,6 @@ extension GoRideMapViewRepresentable {
         
         func addAndSelectAnnotation(withCoornadite coordinate: CLLocationCoordinate2D) {
             
-            // Removing all annotations on the map view before adding new annotation
-            parent.mapView.removeAnnotations(parent.mapView.annotations)
-            
             let anno = MKPointAnnotation()
             anno.coordinate = coordinate
             self.parent.mapView.addAnnotation(anno)
@@ -116,9 +108,6 @@ extension GoRideMapViewRepresentable {
         }
         
         func configurePolyline(withDestinationCoordinate coordinate: CLLocationCoordinate2D) {
-            
-            // Removes a previous router before drawing a new router on the map view
-            parent.mapView.removeOverlays(parent.mapView.overlays)
             
             guard let userLocationCoordinate = self.userLocationCoordinate else { return }
             getDestinationRoute(from: userLocationCoordinate,
@@ -133,7 +122,8 @@ extension GoRideMapViewRepresentable {
             }
         }
         
-        //Get the router representing the direction between the start and end points.
+        /* Get the router representing the direction between the start and end points.
+         */
         func getDestinationRoute(from userLocation: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping (MKRoute) -> Void) {
             let userPlacemark = MKPlacemark(coordinate: userLocation)
             let destPlacemark = MKPlacemark(coordinate: destination)
@@ -155,7 +145,10 @@ extension GoRideMapViewRepresentable {
         }
         
         func clearMapViewAndRecentUserLocation() {
+            
+            // Removing all annotations on the map view before adding new annotation
             parent.mapView.removeAnnotations(parent.mapView.annotations)
+            // Removes a previous router before drawing a new router on the map view
             parent.mapView.removeOverlays(parent.mapView.overlays)
             
             if let currentRegion = currentRegion {
