@@ -124,6 +124,12 @@ extension GoRideMapViewRepresentable {
             getDestinationRoute(from: userLocationCoordinate,
                                 to: coordinate) { router in
                 self.parent.mapView.addOverlay(router.polyline)
+                
+                /* Set the visible region with the aspect ratio as the map view's frame
+                 */
+                let rect = self.parent.mapView.mapRectThatFits(router.polyline.boundingMapRect, edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
+
+                self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }
         

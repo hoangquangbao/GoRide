@@ -25,7 +25,7 @@ struct RideRequestView: View {
                     
                     Rectangle()
                         .fill(Color(.systemGray3))
-                        .frame(width: 1, height: 25)
+                        .frame(width: 1, height: 20)
                     
                     Rectangle()
                         .frame(width: 6, height: 6)
@@ -60,7 +60,7 @@ struct RideRequestView: View {
                 }
                 .padding(.leading)
             }
-            .padding()
+            .padding(.horizontal)
             
             Divider()
             
@@ -91,10 +91,10 @@ struct RideRequestView: View {
                             }
                             .font(.system(.subheadline, weight: .bold))
                         }
-                        .frame(width: 140, height: 220)
+                        .frame(width: 140, height: 210)
                         .background(content: {
                             Capsule()
-                                .fill(.gray.opacity(0.2))
+                                .fill(.gray.opacity(0.1))
                         })
                     }
                 }
