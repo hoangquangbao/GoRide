@@ -13,25 +13,33 @@ struct HomeView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
-        ZStack(alignment: .top) {
-            
-            GoRideMapViewRepresentable(mapState: $mapState)
-                .edgesIgnoringSafeArea(.all)
-            
-            if mapState == .searchingForLocation {
-                LocationSearchView(mapState: $mapState)
-            } else if mapState == .noInput {
-                LocationSearchActivationView()
-                    .onTapGesture {
-                        withAnimation {
-                            mapState = .searchingForLocation
+        ZStack(alignment: .bottom) {
+            ZStack(alignment: .top) {
+                
+                GoRideMapViewRepresentable(mapState: $mapState)
+                    .edgesIgnoringSafeArea(.all)
+                
+                if mapState == .searchingForLocation {
+                    LocationSearchView(mapState: $mapState)
+                } else if mapState == .noInput {
+                    LocationSearchActivationView()
+                        .onTapGesture {
+                            withAnimation(.spring()) {
+                                mapState = .searchingForLocation
+                            }
                         }
-                    }
+                }
+                
+                MapViewActionButton(mapState: $mapState)
             }
             
-            MapViewActionButton(mapState: $mapState)
+            if mapState == .locationSelected {
+                RideRequestView()
+                    .transition(.move(edge: .bottom))
+            }
         }
-        .preferredColorScheme(.dark)
+        .edgesIgnoringSafeArea(.bottom)
+//        .preferredColorScheme(.dark)
         .foregroundColor(colorScheme == .light ? .black : .white)
     }
 }

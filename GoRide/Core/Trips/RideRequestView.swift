@@ -13,6 +13,7 @@ struct RideRequestView: View {
             Capsule()
                 .foregroundColor(Color(.systemGray5))
                 .frame(width: 50, height: 6)
+                .padding(.top,5)
             
             /* Trip info view */
             //header view
@@ -103,7 +104,6 @@ struct RideRequestView: View {
             Divider()
                 .padding(.vertical,8)
             
-            VStack(spacing: 20) {
                 /* Payment option view */
                 HStack(spacing: 12) {
                     Text("Visa")
@@ -111,7 +111,7 @@ struct RideRequestView: View {
                         .foregroundColor(.white)
                         .padding(6)
                         .background(.green)
-                        .cornerRadius(10)
+                        .cornerRadius(5)
                     
                     Text("***** 1234")
                         .fontWeight(.bold)
@@ -132,16 +132,18 @@ struct RideRequestView: View {
                     
                 } label: {
                     Text("CONFIRM RIDE")
-                        .font(.system(size: 18, weight: .bold))
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
                         .background(.blue)
-                        .cornerRadius(10)
+                        .cornerRadius(20)
                         .padding(.horizontal)
                 }
-            }
         }
+        .padding(.bottom, 20)
+        .background()
+        .cornerRadius(25)
     }
 }
 
