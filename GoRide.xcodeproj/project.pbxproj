@@ -13,6 +13,7 @@
 		068426B529C2C00E004C1F68 /* MapViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B429C2C00E004C1F68 /* MapViewActionButton.swift */; };
 		068426B729C2C98E004C1F68 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B629C2C98E004C1F68 /* LocationSearchView.swift */; };
 		068426B929C2F1A6004C1F68 /* LocationSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B829C2F1A6004C1F68 /* LocationSearchResultCell.swift */; };
+		06C64FD729D3CA36001CDC68 /* RideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C64FD629D3CA36001CDC68 /* RideType.swift */; };
 		06D85F2829C1673C006C0779 /* GoRideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D85F2729C1673C006C0779 /* GoRideApp.swift */; };
 		06D85F2C29C1673E006C0779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06D85F2B29C1673E006C0779 /* Assets.xcassets */; };
 		06D85F2F29C1673E006C0779 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06D85F2E29C1673E006C0779 /* Preview Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		068426B429C2C00E004C1F68 /* MapViewActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewActionButton.swift; sourceTree = "<group>"; };
 		068426B629C2C98E004C1F68 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		068426B829C2F1A6004C1F68 /* LocationSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultCell.swift; sourceTree = "<group>"; };
+		06C64FD629D3CA36001CDC68 /* RideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideType.swift; sourceTree = "<group>"; };
 		06D85F2429C1673C006C0779 /* GoRide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoRide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06D85F2729C1673C006C0779 /* GoRideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoRideApp.swift; sourceTree = "<group>"; };
 		06D85F2B29C1673E006C0779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,10 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				06D85F3A29C16766006C0779 /* App */,
+				06D85F3729C16752006C0779 /* Models */,
 				06D85F3929C16763006C0779 /* Core */,
 				06D85F3829C16761006C0779 /* Extentions */,
 				06D85F3629C1674F006C0779 /* Managers */,
-				06D85F3729C16752006C0779 /* Models */,
 				068426AB29C2B7ED004C1F68 /* Utilities */,
 				06D85F2B29C1673E006C0779 /* Assets.xcassets */,
 				06D85F2D29C1673E006C0779 /* Preview Content */,
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				065A7ABF29CD42D500D9C1F8 /* MapViewState.swift */,
+				06C64FD629D3CA36001CDC68 /* RideType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06D85F4029C174A9006C0779 /* LocationManager.swift in Sources */,
+				06C64FD729D3CA36001CDC68 /* RideType.swift in Sources */,
 				068426AD29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift in Sources */,
 				06D85F2829C1673C006C0779 /* GoRideApp.swift in Sources */,
 				06ECAFB829C98C4000837E6F /* LocationSearchViewModel.swift in Sources */,

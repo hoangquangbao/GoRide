@@ -75,18 +75,18 @@ struct RideRequestView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 
                 HStack(spacing: 15) {
-                    ForEach(1...5, id: \.self) { index in
+                    ForEach(RideType.allCases, id: \.self) { type in
                         VStack(alignment: .center) {
-                            Image("img_bugatti")
+                            Image(type.imageName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100)
                             
                             Group {
-                                Text("Bugatti Chiron")
+                                Text(type.description)
                                     .padding(.vertical, 10)
                                 
-                                Text("$150")
+                                Text(type.price)
                                     .font(.system(size: 25))
                             }
                             .font(.system(.subheadline, weight: .bold))
