@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var mapState: MapViewState = .noInput
+    @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
@@ -41,6 +43,12 @@ struct HomeView: View {
         .edgesIgnoringSafeArea(.bottom)
 //        .preferredColorScheme(.dark)
         .foregroundColor(colorScheme == .light ? .black : .white)
+        .onReceive(LocationManager.shared.$userLocation) { location in
+            if let location = location {
+                locationViewModel.userLocation = location
+                print("DEBUG: User location in home view is \(location)")
+            }
+        }
     }
 }
 
