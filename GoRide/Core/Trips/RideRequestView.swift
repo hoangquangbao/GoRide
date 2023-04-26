@@ -77,7 +77,7 @@ struct RideRequestView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 
-                HStack(spacing: 15) {
+                HStack(spacing: 10) {
                     ForEach(RideType.allCases, id: \.self) { type in
                         VStack(alignment: .center) {
                             Image(type.imageName)
@@ -87,7 +87,8 @@ struct RideRequestView: View {
                             
                             Group {
                                 Text(type.description)
-                                    .padding(.vertical, 10)
+                                    .font(.system(size: 15))
+                                    .padding(.vertical, 5)
                                 
                                 Text(type.price)
                                     .font(.system(size: 25))
@@ -95,6 +96,7 @@ struct RideRequestView: View {
                             .font(.system(.subheadline, weight: .bold))
                             .foregroundColor(.black)
                         }
+                        .scaleEffect(selectedRideType == type ? 1.1 : 0.9)
                         .frame(width: 140, height: 210)
                         .background(content: {
                             Capsule()
@@ -106,6 +108,7 @@ struct RideRequestView: View {
                                         .stroke(selectedRideType == type ? .yellow : .gray.opacity(0.2), lineWidth: 1)
                                 }
                         })
+                        .animation(.linear(duration: 0.25), value: selectedRideType)
                         .onTapGesture {
                             selectedRideType = type
                         }
@@ -121,9 +124,9 @@ struct RideRequestView: View {
             HStack(spacing: 12) {
                 Text("Visa")
                     .font(.system(.subheadline, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.yellow)
                     .padding(6)
-                    .background(.green)
+                    .background(.black)
                     .cornerRadius(5)
                 
                 Text("***** 1234")
@@ -149,7 +152,7 @@ struct RideRequestView: View {
                     .foregroundColor(.white)
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .background(.blue)
+                    .background(.green)
                     .cornerRadius(20)
                     .padding(.horizontal)
             }
