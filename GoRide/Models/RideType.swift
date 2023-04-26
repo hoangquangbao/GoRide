@@ -70,7 +70,7 @@ enum RideType: Int, CaseIterable, Identifiable {
     }
     
     func computePrice(for distanceInMeters: Double) -> Double {
-        let distanceInMiles = distanceInMiles / 1600
+        let distanceInMiles = distanceInMeters / 1600
         
         switch self {
         case .buggati:

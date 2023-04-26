@@ -10,6 +10,7 @@ import SwiftUI
 struct RideRequestView: View {
     
     @State private var selectedRideType: RideType = .allCases[0]
+    @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
     var body: some View {
         VStack {
@@ -87,11 +88,12 @@ struct RideRequestView: View {
                             
                             Group {
                                 Text(type.description)
-                                    .font(.system(size: 15))
+                                    .font(.system(size: 10))
                                     .padding(.vertical, 5)
-                                
-                                Text(type.price)
-                                    .font(.system(size: 25))
+
+                                 Text(locationViewModel.computeRidePrice(forType: type).toCurrency())
+                                    .font(.system(size: 20))
+                                    .lineLimit(1)
                             }
                             .font(.system(.subheadline, weight: .bold))
                             .foregroundColor(.black)
