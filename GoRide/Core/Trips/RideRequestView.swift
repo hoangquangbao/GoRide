@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RideRequestView: View {
+    
+    @State private var selectedRideType: RideType = .allCases[0]
+    
     var body: some View {
         VStack {
             Capsule()
@@ -74,28 +77,41 @@ struct RideRequestView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 
-                HStack(spacing: 15) {
-                    ForEach(1...5, id: \.self) { index in
+                HStack(spacing: 10) {
+                    ForEach(RideType.allCases, id: \.self) { type in
                         VStack(alignment: .center) {
-                            Image("img_bugatti")
+                            Image(type.imageName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100)
                             
                             Group {
-                                Text("Bugatti Chiron")
-                                    .padding(.vertical, 10)
+                                Text(type.description)
+                                    .font(.system(size: 15))
+                                    .padding(.vertical, 5)
                                 
-                                Text("$150")
+                                Text(type.price)
                                     .font(.system(size: 25))
                             }
                             .font(.system(.subheadline, weight: .bold))
+                            .foregroundColor(.black)
                         }
+                        .scaleEffect(selectedRideType == type ? 1.1 : 0.9)
                         .frame(width: 140, height: 210)
                         .background(content: {
                             Capsule()
-                                .fill(.gray.opacity(0.1))
+                                .fill(
+                                    (selectedRideType == type ? .yellow.opacity(0.9) : .gray.opacity(0.1))
+                                )
+                                .overlay {
+                                    Capsule()
+                                        .stroke(selectedRideType == type ? .yellow : .gray.opacity(0.2), lineWidth: 1)
+                                }
                         })
+                        .animation(.linear(duration: 0.25), value: selectedRideType)
+                        .onTapGesture {
+                            selectedRideType = type
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -104,42 +120,42 @@ struct RideRequestView: View {
             Divider()
                 .padding(.vertical,8)
             
-                /* Payment option view */
-                HStack(spacing: 12) {
-                    Text("Visa")
-                        .font(.system(.subheadline, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(6)
-                        .background(.green)
-                        .cornerRadius(5)
-                    
-                    Text("***** 1234")
-                        .fontWeight(.bold)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "chevron.right")
-                        .imageScale(.medium)
-                }
-                .padding(.horizontal,8)
-                .frame(height: 50)
-                .background(Color(.systemGroupedBackground))
-                .cornerRadius(10)
-                .padding(.horizontal)
+            /* Payment option view */
+            HStack(spacing: 12) {
+                Text("Visa")
+                    .font(.system(.subheadline, weight: .bold))
+                    .foregroundColor(.yellow)
+                    .padding(6)
+                    .background(.black)
+                    .cornerRadius(5)
                 
-                /* Request ride button */
-                Button {
-                    
-                } label: {
-                    Text("CONFIRM RIDE")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background(.blue)
-                        .cornerRadius(20)
-                        .padding(.horizontal)
-                }
+                Text("***** 1234")
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .imageScale(.medium)
+            }
+            .padding(.horizontal,8)
+            .frame(height: 50)
+            .background(Color(.systemGroupedBackground))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            /* Request ride button */
+            Button {
+                
+            } label: {
+                Text("CONFIRM RIDE")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(.green)
+                    .cornerRadius(20)
+                    .padding(.horizontal)
+            }
         }
         .padding(.bottom, 20)
         .background()
