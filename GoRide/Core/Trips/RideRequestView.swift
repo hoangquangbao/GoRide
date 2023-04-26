@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RideRequestView: View {
+    
+    @State private var selectedRideType: RideType = .allCases[0]
+    
     var body: some View {
         VStack {
             Capsule()
@@ -90,12 +93,22 @@ struct RideRequestView: View {
                                     .font(.system(size: 25))
                             }
                             .font(.system(.subheadline, weight: .bold))
+                            .foregroundColor(.black)
                         }
                         .frame(width: 140, height: 210)
                         .background(content: {
                             Capsule()
-                                .fill(.gray.opacity(0.1))
+                                .fill(
+                                    (selectedRideType == type ? .yellow.opacity(0.9) : .gray.opacity(0.1))
+                                )
+                                .overlay {
+                                    Capsule()
+                                        .stroke(selectedRideType == type ? .yellow : .gray.opacity(0.2), lineWidth: 1)
+                                }
                         })
+                        .onTapGesture {
+                            selectedRideType = type
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -104,42 +117,42 @@ struct RideRequestView: View {
             Divider()
                 .padding(.vertical,8)
             
-                /* Payment option view */
-                HStack(spacing: 12) {
-                    Text("Visa")
-                        .font(.system(.subheadline, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(6)
-                        .background(.green)
-                        .cornerRadius(5)
-                    
-                    Text("***** 1234")
-                        .fontWeight(.bold)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "chevron.right")
-                        .imageScale(.medium)
-                }
-                .padding(.horizontal,8)
-                .frame(height: 50)
-                .background(Color(.systemGroupedBackground))
-                .cornerRadius(10)
-                .padding(.horizontal)
+            /* Payment option view */
+            HStack(spacing: 12) {
+                Text("Visa")
+                    .font(.system(.subheadline, weight: .bold))
+                    .foregroundColor(.white)
+                    .padding(6)
+                    .background(.green)
+                    .cornerRadius(5)
                 
-                /* Request ride button */
-                Button {
-                    
-                } label: {
-                    Text("CONFIRM RIDE")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background(.blue)
-                        .cornerRadius(20)
-                        .padding(.horizontal)
-                }
+                Text("***** 1234")
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .imageScale(.medium)
+            }
+            .padding(.horizontal,8)
+            .frame(height: 50)
+            .background(Color(.systemGroupedBackground))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            /* Request ride button */
+            Button {
+                
+            } label: {
+                Text("CONFIRM RIDE")
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(.blue)
+                    .cornerRadius(20)
+                    .padding(.horizontal)
+            }
         }
         .padding(.bottom, 20)
         .background()
