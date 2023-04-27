@@ -26,4 +26,16 @@ extension Double {
     func toCurrency() -> String {
         return currencyFormatter.string(from: self as NSNumber) ?? ""
     }
+    
+    private var distanceFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }
+    
+    func toDistanceInKilometers() -> String {
+        let distanceFormatter = distanceFormatter.string(from: self as NSNumber) ?? "0.00"
+        return distanceFormatter + " Km"
+    }
 }

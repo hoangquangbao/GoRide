@@ -14,6 +14,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     @Published var selectedGorideLocation: GorideLocation?
     @Published var pickupTime: String?
     @Published var dropOffTime: String?
+    @Published var tripDistanceInKilometers: Double?
     
     private let searchCompleter = MKLocalSearchCompleter()
     var queryFragment: String = "" {
@@ -58,14 +59,17 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     func computeRidePrice(forType type: RideType) -> Double  {
         guard let destCoordinate = selectedGorideLocation?.coordinate else { return 0.0 }
         guard let userCoordinate = self.userLocation else { return 0.0 }
-        
+
         let userLocation = CLLocation(latitude: userCoordinate.latitude,
                                       longitude: userCoordinate.longitude)
         let destination = CLLocation(latitude: destCoordinate.latitude,
                                      longitude: destCoordinate.longitude)
         
-        let tripDistanceInMeters = userLocation.distance(from: destination)
-        return type.computePrice(for: tripDistanceInMeters)
+        DispatchQueue.main.async {
+            self.tripDistanceInKilometers = userLocation.distance(from: destination) / 1000
+        }
+        
+        return type.computePrice(for: tripDistanceInKilometers ?? 0.0)
     }
     
     /* Get the router representing the direction between the start and end points.
