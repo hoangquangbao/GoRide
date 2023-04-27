@@ -11,7 +11,7 @@ import MapKit
 class LocationSearchViewModel: NSObject, ObservableObject {
     
     @Published var result = [MKLocalSearchCompletion]()
-    @Published var selectLocationCoordinate: CLLocationCoordinate2D?
+    @Published var selectedGorideLocation: GorideLocation?
     
     private let searchCompleter = MKLocalSearchCompleter()
     var queryFragment: String = "" {
@@ -38,7 +38,8 @@ class LocationSearchViewModel: NSObject, ObservableObject {
             guard let item = response?.mapItems.first else { return }
             let coordinate = item.placemark.coordinate
             
-            self.selectLocationCoordinate = coordinate
+            self.selectedGorideLocation = GorideLocation(title: localSearch.title,
+                                                           coordinate: coordinate)
             NSLog("DEBUG select location coordinates: \(coordinate)")
         }
     }
@@ -53,7 +54,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     }
     
     func computeRidePrice(forType type: RideType) -> Double  {
-        guard let destCoordinate = selectLocationCoordinate else { return 0.0 }
+        guard let destCoordinate = selectedGorideLocation?.coordinate else { return 0.0 }
         guard let userCoordinate = self.userLocation else { return 0.0 }
         
         let userLocation = CLLocation(latitude: userCoordinate.latitude,

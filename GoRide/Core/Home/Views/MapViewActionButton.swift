@@ -44,7 +44,7 @@ struct MapViewActionButton: View {
             print("DEBUG: Location selected - Clear map view")
             mapState = .noInput
             /* Fixed bug: duplicate selected of location */
-            vm.selectLocationCoordinate = nil
+            vm.selectedGorideLocation = nil
         case .searchingForLocation:
             mapState = .noInput
         }

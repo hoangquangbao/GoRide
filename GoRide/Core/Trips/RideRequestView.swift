@@ -53,8 +53,10 @@ struct RideRequestView: View {
                     .foregroundColor(.gray)
                     
                     HStack {
-                        Text("Coffee Loves")
-                            .fontWeight(.semibold)
+                        if let selectedGorideLocation = locationViewModel.selectedGorideLocation?.title {
+                            Text(selectedGorideLocation)
+                                .fontWeight(.semibold)
+                        }
                         
                         Spacer()
                         

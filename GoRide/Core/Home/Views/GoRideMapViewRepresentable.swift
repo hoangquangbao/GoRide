@@ -33,7 +33,7 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
             context.coordinator.clearMapViewAndRecentUserLocation()
             break
         case .locationSelected:
-            if let coordinate = vm.selectLocationCoordinate {
+            if let coordinate = vm.selectedGorideLocation?.coordinate {
                 print("DEBUG selected coordinates in map view: \(coordinate)")
                 context.coordinator.addAndSelectAnnotation(withCoornadite: coordinate)
                 context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
