@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		064E752F29FA12EE0056B90A /* GorideLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E752E29FA12EE0056B90A /* GorideLocation.swift */; };
 		065A7AC029CD42D500D9C1F8 /* MapViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A7ABF29CD42D500D9C1F8 /* MapViewState.swift */; };
 		068426AD29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426AC29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift */; };
 		068426B329C2B9AC004C1F68 /* LocationSearchActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B229C2B9AC004C1F68 /* LocationSearchActivationView.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		064E752E29FA12EE0056B90A /* GorideLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GorideLocation.swift; sourceTree = "<group>"; };
 		065A7ABF29CD42D500D9C1F8 /* MapViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewState.swift; sourceTree = "<group>"; };
 		068426AC29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextFieldStyle.swift; sourceTree = "<group>"; };
 		068426B229C2B9AC004C1F68 /* LocationSearchActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchActivationView.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				065A7ABF29CD42D500D9C1F8 /* MapViewState.swift */,
 				06C64FD629D3CA36001CDC68 /* RideType.swift */,
+				064E752E29FA12EE0056B90A /* GorideLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				068426B729C2C98E004C1F68 /* LocationSearchView.swift in Sources */,
 				06F4BF1029D1467700752686 /* RideRequestView.swift in Sources */,
 				068426B929C2F1A6004C1F68 /* LocationSearchResultCell.swift in Sources */,
+				064E752F29FA12EE0056B90A /* GorideLocation.swift in Sources */,
 				068426B329C2B9AC004C1F68 /* LocationSearchActivationView.swift in Sources */,
 				068426B529C2C00E004C1F68 /* MapViewActionButton.swift in Sources */,
 			);
