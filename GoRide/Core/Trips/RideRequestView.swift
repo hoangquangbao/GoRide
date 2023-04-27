@@ -98,7 +98,7 @@ struct RideRequestView: View {
                             .font(.system(.subheadline, weight: .bold))
                             .foregroundColor(.black)
                         }
-                        .scaleEffect(selectedRideType == type ? 1.1 : 0.9)
+                        .scaleEffect(selectedRideType == type ? 1.2 : 0.9)
                         .frame(width: 140, height: 210)
                         .background(content: {
                             Capsule()
