@@ -11,7 +11,7 @@ import MapKit
 struct GoRideMapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
-    let locationManager = LocationManager.shared
+//    let locationManager = LocationManager.shared
     
     @Binding var mapState: MapViewState
     
