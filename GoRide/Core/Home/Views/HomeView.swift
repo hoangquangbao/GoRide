@@ -35,7 +35,7 @@ struct HomeView: View {
                 MapViewActionButton(mapState: $mapState)
             }
             
-            if mapState == .locationSelected {
+            if mapState == .locationSelected || mapState == .polylineAdded {
                 RideRequestView()
                     .transition(.move(edge: .bottom))
             }

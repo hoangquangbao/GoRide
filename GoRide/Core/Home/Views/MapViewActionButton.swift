@@ -40,7 +40,7 @@ struct MapViewActionButton: View {
         switch state {
         case .noInput:
             print("DEBUG: No input")
-        case .locationSelected:
+        case .locationSelected, .polylineAdded:
             print("DEBUG: Location selected - Clear map view")
             mapState = .noInput
             /* Fixed bug: duplicate selected of location */
@@ -54,7 +54,7 @@ struct MapViewActionButton: View {
         switch state {
         case .noInput:
             return "line.3.horizontal.decrease"
-        case .locationSelected, .searchingForLocation:
+        case .locationSelected, .searchingForLocation, .polylineAdded:
             return "arrow.backward"
         }
     }
