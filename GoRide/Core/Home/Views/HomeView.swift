@@ -41,7 +41,6 @@ struct HomeView: View {
             }
         }
         .edgesIgnoringSafeArea(.bottom)
-//        .preferredColorScheme(.dark)
         .foregroundColor(colorScheme == .light ? .black : .white)
         .onReceive(LocationManager.shared.$userLocation) { location in
             if let location = location {

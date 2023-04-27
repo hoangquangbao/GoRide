@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		064E752F29FA12EE0056B90A /* GorideLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E752E29FA12EE0056B90A /* GorideLocation.swift */; };
+		064E753129FA2AA60056B90A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E753029FA2AA60056B90A /* Color.swift */; };
 		065A7AC029CD42D500D9C1F8 /* MapViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065A7ABF29CD42D500D9C1F8 /* MapViewState.swift */; };
 		068426AD29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426AC29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift */; };
 		068426B329C2B9AC004C1F68 /* LocationSearchActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068426B229C2B9AC004C1F68 /* LocationSearchActivationView.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		064E752E29FA12EE0056B90A /* GorideLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GorideLocation.swift; sourceTree = "<group>"; };
+		064E753029FA2AA60056B90A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		065A7ABF29CD42D500D9C1F8 /* MapViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewState.swift; sourceTree = "<group>"; };
 		068426AC29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextFieldStyle.swift; sourceTree = "<group>"; };
 		068426B229C2B9AC004C1F68 /* LocationSearchActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchActivationView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				06ABA22F29F923B0000A814D /* FormatNumber.swift */,
+				064E753029FA2AA60056B90A /* Color.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				068426AD29C2B800004C1F68 /* PlaceholderTextFieldStyle.swift in Sources */,
 				06ABA23029F923B0000A814D /* FormatNumber.swift in Sources */,
 				06D85F2829C1673C006C0779 /* GoRideApp.swift in Sources */,
+				064E753129FA2AA60056B90A /* Color.swift in Sources */,
 				06ECAFB829C98C4000837E6F /* LocationSearchViewModel.swift in Sources */,
 				06D85F3E29C168D6006C0779 /* GoRideMapViewRepresentable.swift in Sources */,
 				065A7AC029CD42D500D9C1F8 /* MapViewState.swift in Sources */,
