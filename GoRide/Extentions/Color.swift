@@ -8,9 +8,10 @@
 import SwiftUI
 
 extension Color {
-    static let them = ColorTheme()
+    static let theme = ColorTheme()
 }
 
 struct ColorTheme {
     let backgroundColor = Color("backgroundColor")
+    let secondaryBackgroundColor = Color("secondaryBackgroundColor")
 }
