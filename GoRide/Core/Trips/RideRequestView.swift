@@ -22,26 +22,12 @@ struct RideRequestView: View {
             /* Trip info view */
             //header view
             HStack {
-                VStack {
-                    Rectangle()
-                        .fill(Color(.systemGray3))
-                        .frame(width: 6, height: 6)
-                    
-                    Rectangle()
-                        .fill(Color(.systemGray3))
-                        .frame(width: 1, height: 20)
-                    
-                    Rectangle()
-                        .frame(width: 6, height: 6)
-                        .padding(3)
-                        .overlay {
-                            Rectangle()
-                                .stroke(.green)
-                        }
-                }
-                
-                VStack(alignment: .leading, spacing: 25) {
+                VStack(alignment: .leading, spacing: 5) {
                     HStack {
+                        Rectangle()
+                            .frame(width: 6, height: 6)
+                            .frame(width: 30)
+                        
                         Text("Current location")
                             .fontWeight(.semibold)
                         
@@ -52,7 +38,21 @@ struct RideRequestView: View {
                     .font(.system(.subheadline))
                     .foregroundColor(.gray)
                     
+                    Rectangle()
+                        .fill(Color(.systemGray2))
+                        .frame(width: 1, height: 10)
+                        .frame(width: 30)
+                    
                     HStack {
+                        Rectangle()
+                            .frame(width: 6, height: 6)
+                            .padding(3)
+                            .overlay {
+                                Rectangle()
+                                    .stroke(.green)
+                            }
+                            .frame(width: 30)
+                        
                         if let selectedGorideLocation = locationViewModel.selectedGorideLocation?.title {
                             Text(selectedGorideLocation)
                                 .fontWeight(.semibold)
@@ -63,8 +63,28 @@ struct RideRequestView: View {
                         Text(locationViewModel.dropOffTime ?? "")
                     }
                     .font(.system(.subheadline))
+                    
+                    Rectangle()
+                        .fill(Color(.systemGray2))
+                        .frame(width: 1, height: 10)
+                        .frame(width: 30)
+                    
+                    HStack {
+                        Image("img_distance")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .scaledToFit()
+                            .frame(width: 30)
+                        
+                        Text("Distance")
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        Text("2 km")
+                    }
+                    .font(.system(.subheadline))
                 }
-                .padding(.leading)
             }
             .padding(.horizontal)
             
@@ -74,7 +94,7 @@ struct RideRequestView: View {
             Text("SUGGESTED RIDES")
                 .font(.subheadline)
                 .fontWeight(.semibold)
-                .padding()
+                .padding(.horizontal)
                 .foregroundColor(Color.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -105,7 +125,7 @@ struct RideRequestView: View {
                         .background(content: {
                             Capsule()
                                 .fill(
-                                    (selectedRideType == type ? .yellow.opacity(0.9) : .white.opacity(0.9))
+                                    (selectedRideType == type ? .yellow.opacity(0.9) : .white.opacity(0.8))
                                 )
                                 .overlay {
                                     Capsule()
@@ -122,32 +142,37 @@ struct RideRequestView: View {
             }
             
             Divider()
-                .padding(.vertical,8)
+                .padding(.vertical,5)
             
             /* Payment option view */
-            HStack(spacing: 12) {
-                Text("Visa")
-                    .font(.system(.subheadline, weight: .bold))
-                    .foregroundColor(.yellow)
-                    .padding(6)
-                    .background(.black)
-                    .cornerRadius(5)
+            Button {
                 
-                Text("***** 1234")
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                
-                Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.white)
-                    .imageScale(.medium)
+            } label: {
+                HStack(spacing: 12) {
+                    Text("Visa")
+                        .font(.system(.subheadline, weight: .bold))
+                        .foregroundColor(.yellow)
+                        .padding(6)
+                        .background(.black)
+                        .cornerRadius(5)
+                    
+                    Text("***** 1234")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.white)
+                        .imageScale(.medium)
+                }
+                .padding(.horizontal,8)
+                .frame(height: 50)
+                .background(Color.secondary)
+                .cornerRadius(10)
+                .padding(.horizontal)
             }
-            .padding(.horizontal,8)
-            .frame(height: 50)
-            .background(Color.secondary)
-            .cornerRadius(10)
-            .padding(.horizontal)
+
             
             /* Request ride button */
             Button {
@@ -165,7 +190,7 @@ struct RideRequestView: View {
         }
         .padding(.bottom, 20)
         .background(
-            Color.them.backgroundColor
+            Color.theme.secondaryBackgroundColor
         )
         .cornerRadius(25)
     }
