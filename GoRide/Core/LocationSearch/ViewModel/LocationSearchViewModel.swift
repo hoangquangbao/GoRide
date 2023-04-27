@@ -68,9 +68,8 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         DispatchQueue.main.async {
             self.tripDistanceInKilometers = userLocation.distance(from: destination) / 1000
         }
-
+        
         return type.computePrice(for: tripDistanceInKilometers ?? 0.0)
-
     }
     
     /* Get the router representing the direction between the start and end points.

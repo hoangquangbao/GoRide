@@ -114,9 +114,6 @@ struct RideRequestView: View {
                                     .padding(.vertical, 5)
                                 
                                 Text(locationViewModel.computeRidePrice(forType: type).toCurrency())
-//                                Text(locationViewModel.computeRidePrice?.toCurrency())
-//                                    .font(.system(size: 20))
-//                                    .lineLimit(1)
                             }
                             .font(.system(.subheadline, weight: .bold))
                             .foregroundColor(.black)
@@ -173,7 +170,7 @@ struct RideRequestView: View {
                 .cornerRadius(10)
                 .padding(.horizontal)
             }
-
+            
             
             /* Request ride button */
             Button {
