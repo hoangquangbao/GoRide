@@ -76,12 +76,12 @@ struct RideRequestView: View {
                             .scaledToFit()
                             .frame(width: 30)
                         
-                        Text("Distance")
+                        Text("Distantion")
                             .fontWeight(.semibold)
                         
                         Spacer()
                         
-                        Text("2 km")
+                        Text((locationViewModel.tripDistanceInKilometers ?? 0.00).toDistanceInKilometers())
                     }
                     .font(.system(.subheadline))
                 }
@@ -114,8 +114,9 @@ struct RideRequestView: View {
                                     .padding(.vertical, 5)
                                 
                                 Text(locationViewModel.computeRidePrice(forType: type).toCurrency())
-                                    .font(.system(size: 20))
-                                    .lineLimit(1)
+//                                Text(locationViewModel.computeRidePrice?.toCurrency())
+//                                    .font(.system(size: 20))
+//                                    .lineLimit(1)
                             }
                             .font(.system(.subheadline, weight: .bold))
                             .foregroundColor(.black)
