@@ -11,7 +11,7 @@ import MapKit
 struct GoRideMapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
-//    let locationManager = LocationManager.shared
+    //    let locationManager = LocationManager.shared
     
     @Binding var mapState: MapViewState
     
@@ -27,7 +27,7 @@ struct GoRideMapViewRepresentable: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         print("DEBUG: Map state is \(mapState)")
-
+        
         switch mapState {
         case .noInput:
             context.coordinator.clearMapViewAndRecentUserLocation()
@@ -77,9 +77,9 @@ extension GoRideMapViewRepresentable {
                                                     longitude: userLocation.coordinate.longitude),
                                             span:
                                                 //set the desired zoom level of the map
-                                                MKCoordinateSpan(
-                                                    latitudeDelta: 0.05,
-                                                    longitudeDelta: 0.05))
+                                            MKCoordinateSpan(
+                                                latitudeDelta: 0.05,
+                                                longitudeDelta: 0.05))
             print("User location: \(region.center)")
             
             // Get current region to process after clear the map view
@@ -113,14 +113,14 @@ extension GoRideMapViewRepresentable {
             
             guard let userLocationCoordinate = self.userLocationCoordinate else { return }
             parent.vm.getDestinationRoute(from: userLocationCoordinate,
-                                to: coordinate) { router in
+                                          to: coordinate) { router in
                 self.parent.mapView.addOverlay(router.polyline)
                 self.parent.mapState = .polylineAdded
                 
                 /* Set the visible region with the aspect ratio as the map view's frame
                  */
                 let rect = self.parent.mapView.mapRectThatFits(router.polyline.boundingMapRect, edgePadding: .init(top: 64, left: 32, bottom: 500, right: 32))
-
+                
                 self.parent.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
         }

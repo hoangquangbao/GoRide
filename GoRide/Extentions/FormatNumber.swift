@@ -15,7 +15,7 @@ extension Double {
          IOS Locale Identifiers
          https://woosignal.com/docs/app/ios-locale-identifiers-list
          */
-//        formatter.locale = Locale(identifier: "vi_VN")
+        //        formatter.locale = Locale(identifier: "vi_VN")
         formatter.locale = Locale(identifier: "en_US")
         formatter.numberStyle = .currency
         formatter.minimumFractionDigits = 2

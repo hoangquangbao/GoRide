@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var mapState: MapViewState = .noInput
-    @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    @EnvironmentObject var vm: LocationSearchViewModel
     @State var isShowSheet: Bool = false
     
     // Gesture Properties
@@ -37,7 +37,8 @@ struct HomeView: View {
                         }
                 }
                 
-                MapViewActionButton(mapState: $mapState)
+                MapViewActionButton(mapState: $mapState,
+                                    offset: $offset)
             }
             
             if mapState == .locationSelected || mapState == .polylineAdded {
@@ -83,7 +84,7 @@ struct HomeView: View {
         .background(Color.theme.backgroundColor)
         .onReceive(LocationManager.shared.$userLocation) { location in
             if let location = location {
-                locationViewModel.userLocation = location
+                vm.userLocation = location
                 print("DEBUG: User location in home view is \(location)")
             }
         }

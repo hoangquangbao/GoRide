@@ -10,18 +10,15 @@ import SwiftUI
 struct MapViewActionButton: View {
     
     @Binding var mapState: MapViewState
+    @Binding var offset: CGFloat
     @EnvironmentObject var vm: LocationSearchViewModel
     
     var body: some View {
         
         HStack {
             Button {
-//                if mapState == .searchingForLocation {
-//                    withAnimation {
-//                        mapState = .noInput
-//                    }
-//                }
                 actionForState(mapState)
+                offset = 0
             } label: {
                 Image(systemName: imageNameForState(mapState))
                     .font(.title2)
@@ -63,8 +60,10 @@ struct MapViewActionButton: View {
 struct MapViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
-            MapViewActionButton(mapState: .constant(.noInput))
-            MapViewActionButton(mapState: .constant(.searchingForLocation))
+            MapViewActionButton(mapState: .constant(.noInput),
+                                offset: .constant(0))
+            MapViewActionButton(mapState: .constant(.searchingForLocation),
+                                offset: .constant(0))
         }
     }
 }

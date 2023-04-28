@@ -29,7 +29,6 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     override init() {
         super.init()
         searchCompleter.delegate = self
-//                searchCompleter.queryFragment = queryFragment
     }
     
     func selectLocation(_ localSearch: MKLocalSearchCompletion) {
@@ -42,7 +41,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
             let coordinate = item.placemark.coordinate
             
             self.selectedGorideLocation = GorideLocation(title: localSearch.title,
-                                                           coordinate: coordinate)
+                                                         coordinate: coordinate)
             NSLog("DEBUG select location coordinates: \(coordinate)")
         }
     }
@@ -59,7 +58,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     func computeRidePrice(forType type: RideType) -> Double  {
         guard let destCoordinate = selectedGorideLocation?.coordinate else { return 0.0 }
         guard let userCoordinate = self.userLocation else { return 0.0 }
-
+        
         let userLocation = CLLocation(latitude: userCoordinate.latitude,
                                       longitude: userCoordinate.longitude)
         let destination = CLLocation(latitude: destCoordinate.latitude,
