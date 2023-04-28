@@ -11,8 +11,13 @@ struct HomeView: View {
     
     @State private var mapState: MapViewState = .noInput
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    @State var isShowSheet: Bool = false
     
-//    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    // Gesture Properties
+    @State var offset: CGFloat = 0
+    @State var lastOffset: CGFloat = 0
+    @GestureState var gestureOffset: CGFloat = 0
+    //    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -36,12 +41,45 @@ struct HomeView: View {
             }
             
             if mapState == .locationSelected || mapState == .polylineAdded {
-                RideRequestView()
-                    .transition(.move(edge: .bottom))
+                GeometryReader { proxy in
+                    ZStack(alignment: .bottom) {
+                        VStack {
+                            Spacer()
+                            RideRequestView()
+                        }
+                    }
+                    .offset(y: offset)
+                    .gesture(
+                        DragGesture()
+                            .updating($gestureOffset, body: { value, out, _ in
+                                out = value.translation.height
+                                DispatchQueue.main.async {
+                                    self.offset = gestureOffset + lastOffset
+                                }
+                            })
+                            .onEnded({ value in
+                                withAnimation {
+                                    /// Logic conditions for moving states..
+                                    /// Drag UP
+                                    if offset < 0 {
+                                        offset = 0
+                                    }
+                                    /// Drag DOWN
+                                    else if offset > 0 && proxy.size.height - offset < 400 {
+                                        offset = 400
+                                    }
+                                }
+                                /// Storing last offset...
+                                /// So that the gesture can continue from the last position
+                                lastOffset = offset
+                            })
+                    )
+                }
+                .transition(.move(edge: .bottom))
             }
         }
         .edgesIgnoringSafeArea(.bottom)
-//        .foregroundColor(colorScheme == .light ? .black : .white)
+        //        .foregroundColor(colorScheme == .light ? .black : .white)
         .background(Color.theme.backgroundColor)
         .onReceive(LocationManager.shared.$userLocation) { location in
             if let location = location {
