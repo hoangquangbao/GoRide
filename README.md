@@ -2,7 +2,7 @@
 
 <!--🎥 SHORT VIDEO-->
 ### 🎥 Video
-[![](https://markdown-videos.deta.dev/youtube/_G5jOnZacNU)](https://www.youtube.com/shorts/_G5jOnZacNU)
+https://www.youtube.com/shorts/_G5jOnZacNU
 
 ### 🚙 Feature list: 
 
